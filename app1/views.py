@@ -7,9 +7,14 @@ from django.urls import reverse
 # Create your views here.
 def home(request):
     # PREGUNTA 1 - COMPLETAR LA CARGA DE LA INFORMACION DE LA BASE DE DATOS
+    tipos = TipoMascota.objects.all()
+    mascotas = Mascota.objects.all()
 
     # PASAR LAS VARIABLES DE CONTEXTO DENTRO DE LA FUNCION RENDER
-    return render(request, 'home.html')
+    return render(request, 'home.html', {
+        'tipos': tipos,
+        'mascotas': mascotas
+    })
 
 def buscar(request):
     tipos = TipoMascota.objects.all()
