@@ -62,7 +62,15 @@ def registrarTipo(request):
     # PREGUNTA 2 - INICIO DEL CODIGO
     # DEBE CAPTURAR LOS DATOS QUE VIENEN DEL FORMULARIO
     # CREAR EL OBJETO DE LA CLASE TipoMascota
+    if request.method == "POST":
+        nombre = request.POST.get("nombre")
+        descripcion = request.POST.get("descripcion")
 
+        # Crear el nuevo tipo de mascota
+        TipoMascota.objects.create(
+            nombre=nombre,
+            descripcion=descripcion
+        )
 
     # PREGUNTA 2 - FIN DEL CODIGO
     return HttpResponseRedirect(reverse('app1:home'))
