@@ -7,16 +7,30 @@
     <thead class="table-primary">
       <tr>
         <!--PREGUNTA 4 - CREAR EL ENCABEZADO DE LA TABLA DE LA LISTA DE ADOPTANTES-->
-
-
-
-        
+        <th>Nombre de la Mascota</th>
+        <th>Nombre del Adoptante</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Fecha de Adopción</th>
       </tr>
     </thead>
     <tbody>
 
       <!--PREGUNTA 4 - CREAR EL CUERPO DE LA TABLA CON LOS DATOS DE LOS ADOPTANTES-->
       <!--REVISAR EL SITIO WEB : https://afsegovia.pythonanywhere.com/ PARA EL DESARROLLO DE LA LISTA DE ADOPTANTES-->
+      {% for adopcion in adopciones %}
+        <tr>
+          <td>{{ adopcion.mascota.nombre }}</td>
+          <td>{{ adopcion.persona.nombre }}</td>
+          <td>{{ adopcion.persona.email }}</td>
+          <td>{{ adopcion.persona.telefono }}</td>
+          <td>{{ adopcion.fecha_adopcion }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5" class="text-center">No hay adopciones registradas.</td>
+        </tr>
+      {% endfor %}
 
     </tbody>
   </table>
